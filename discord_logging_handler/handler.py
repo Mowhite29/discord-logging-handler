@@ -3,6 +3,7 @@ import requests
 import json
 from datetime import datetime
 
+
 class DiscordWebHookHandler(logging.Handler):
     colour_map = {
         "DEBUG": 8421504,
@@ -45,6 +46,6 @@ class DiscordWebHookHandler(logging.Handler):
                 headers={"Content-Type": "application/json"},
                 timeout=5
             )
-        
+
         except Exception:
             pass
