@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="discord-logging-handler",
-    version="0.1.0",
+    version="0.2.0",
     description="A logging handler that sends log messages to discord via webhook.",
     long_description=long_description,
     long_description_content_type="text/markdown",

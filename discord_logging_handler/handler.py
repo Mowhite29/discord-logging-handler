@@ -1,6 +1,7 @@
 import logging
 import requests
 import json
+from datetime import datetime
 
 class DiscordWebHookHandler(logging.Handler):
     colour_map = {
@@ -23,6 +24,8 @@ class DiscordWebHookHandler(logging.Handler):
         else:
             log_entry = record.getMessage()
 
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
         if record.exc_info:
             import traceback
             log_entry += "\n" + "".join(traceback.format_exception(*record.exc_info))
@@ -31,7 +34,7 @@ class DiscordWebHookHandler(logging.Handler):
         payload = {
             "embeds": [{
                 "title": f"Log ({record.levelname})",
-                "description": f"```{log_entry}",
+                "description": f"```{log_entry}\n[{timestamp}]```",
                 "color": colour
             }]
         }
