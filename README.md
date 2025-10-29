@@ -1,5 +1,7 @@
 # Discord Logging Handler
 
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/discord-logging-handler?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/discord-logging-handler)
+
 A Python logging handler that sends log messages to Discord via webhook with colour coded levels.
 
 ## Installation
