@@ -5,7 +5,15 @@
 [![Python Version](https://img.shields.io/pypi/pyversions/discord-logging-handler)](https://pypi.org/project/discord-logging-handler/)
 [![License](https://img.shields.io/pypi/l/discord-logging-handler)](https://github.com/yourusername/discord-logging-handler/blob/main/LICENSE)
 
-A Python logging handler that sends log messages to Discord via webhook with colour coded levels.
+A Python logging handler that sends log messages to Discord via webhook with colour-coded levels.
+
+## Features
+
+- Colour-coded embeds by log level
+- Supports full stack traces for errors and exceptions
+- Configurable minimum log level
+- Simple drop-in integration for any Python project
+- Optional development mode to suppress logs during builds/tests
 
 ## Installation
 
@@ -15,20 +23,69 @@ pip install discord-logging-handler
 
 ## Usage
 
+```python
+from discord_logging_handler import DiscordWebHookHandler
+import logging
+
+handler = DiscordWebHookHandler(webhook_url="WEBHOOK_URL", level=logging.INFO, dev_mode=True)
+```
+
+- `webhook_url`:  Your webhook from Discord Integrations.
+- `level` (optional): The minimum level that should trigger logs to be sent to Discord. Defaults to `ERROR`.
+- `dev_mode` (optional): Use to enable development mode (logs are suppressed during builds/tests). Defaults to `False`.
+
+### Example
+
+```python
+from discord_logging_handler import DiscordWebHookHandler
+import logging
+
+# Create handler
+handler = DiscordWebHookHandler(webhook_url="WEBHOOK_URL", level=logging.INFO, dev_mode=False)
+
+# Set up the root logger
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+logger.addHandler(handler)
+
+# Example log messages
+logger.info("Server started successfully.")
+logger.warning("Disk space running low.")
+logger.error("Database connection failed.")
+
+# Example exception handling
+try:
+    1 / 0
+except Exception:
+    logger.exception("An unexpected error occurred.")
+```
+
+### Example Output
+
+Logs appear directly in your Discord channel with level-based colour coding:
+![Discord output](./assets/images/discord-logging-js-3.png)
+
 ### Django Example
 
-settings.py
+`settings.py`
 
-```bash
+```python
+import os
+from pathlib import Path
+from discord_logging_handler import DiscordWebHookHandler  # ensure it's installed
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 DISCORD_WEBHOOK_URL = os.environ.get('DISCORD_WEBHOOK_URL')
 
 LOGGING = {
     'version': 1,
+    'disable_existing_loggers': False,
     'handlers': {
         'file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs/app.log'),
+            'filename': BASE_DIR / 'logs/app.log',
             'formatter': 'verbose',
         },
         'console': {
@@ -38,7 +95,8 @@ LOGGING = {
         'discord': {
             'level': 'INFO',
             'class': 'discord_logging_handler.handler.DiscordWebHookHandler',
-            'webhook_url': DISCORD_WEBHOOK_URL
+            'webhook_url': DISCORD_WEBHOOK_URL,
+            'dev_mode': False
         }
     },
     'root': {
@@ -62,4 +120,26 @@ LOGGING = {
 
 ### Environment Variable
 
-DISCORD_WEBHOOK_URL - Your Discord webhook URL
+`DISCORD_WEBHOOK_URL`: Your Discord webhook URL.
+
+## Discord Webhook Setup
+
+Discord allows webhooks to be created via **Server Settings &rarr; Integrations**.
+
+1. Go to **Server Settings &rarr; Integrations**
+2. Under **Webhooks**, click **New Webhook**
+3. Copy the generated webhook URL
+
+![server settings](./assets/images/discord-logging-js-1.png)
+![webhooks](./assets/images/discord-logging-js-2.png)
+
+## Contributing
+
+Contributions, issues, and feature requests are welcome!  
+Feel free to open an issue or submit a pull request on [GitHub](https://github.com/mowhite29/discord-logging-handler).
+
+## License
+
+MIT License
+
+Copyright (c) 2025 Moses White

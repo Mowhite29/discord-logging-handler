@@ -1,0 +1,5 @@
+dist/
+discord_logging_handler.egg.info
+setup.py
+pyproject.toml
+.vscode/
