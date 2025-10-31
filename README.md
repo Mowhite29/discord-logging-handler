@@ -133,6 +133,10 @@ Discord allows webhooks to be created via **Server Settings &rarr; Integrations*
 ![server settings](./assets/images/discord-logging-js-1.png)
 ![webhooks](./assets/images/discord-logging-js-2.png)
 
+## Changelog
+
+See the full [Changelog](./CHANGELOG.md) for details on version history.
+
 ## Contributing
 
 Contributions, issues, and feature requests are welcome!  
