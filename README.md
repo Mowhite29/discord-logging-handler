@@ -1,6 +1,6 @@
 # Discord Logging Handler
 
-[![PyPI Downloads](https://static.pepy.tech/personalized-badge/discord-logging-handler?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/discord-logging-handler)
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/discord-logging-handler?period=total&units=NONE&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/discord-logging-handler)
 [![PyPI version](https://img.shields.io/pypi/v/discord-logging-handler)](https://pypi.org/project/discord-logging-handler/)
 [![Python Version](https://img.shields.io/pypi/pyversions/discord-logging-handler)](https://pypi.org/project/discord-logging-handler/)
 [![License](https://img.shields.io/pypi/l/discord-logging-handler)](https://github.com/yourusername/discord-logging-handler/blob/main/LICENSE)
