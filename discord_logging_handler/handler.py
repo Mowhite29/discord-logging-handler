@@ -52,19 +52,3 @@ class DiscordWebHookHandler(logging.Handler):
 
         except Exception:
             pass
-
-
-handler = DiscordWebHookHandler(webhook_url="https://discord.com/api/webhooks/1433054807890853928/NugFQftojcus4lz9NGoCfBU_HSABAN26ngmUpjxtR2VoqmtQdLbcYc3B4NLHo0vK2iQz", level=logging.INFO, dev_mode=False)
-
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
-logger.addHandler(handler)
-
-logger.info("Server started successfully.")
-logger.warning("Disk space running low.")
-logger.error("Database connection failed.")
-
-try:
-    1 / 0
-except Exception:
-    logger.exception("An unexpected error occurred.")
